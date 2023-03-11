@@ -95,7 +95,15 @@
       margin: 10px;
       transition: 0.2s;
     }
-
+    .radiobuttons {
+      border: 1px solid;
+      border-radius: 3px;
+      padding: 11px;
+      display: inline-block;
+      background-color: #B4B4B4;
+      color: #353535;
+      margin: 5px;
+    }
     #submit:hover,
     #submit:focus,
     #but:hover,
@@ -483,10 +491,13 @@
     var Pb;
     var linka;
     var pauset = 0;
-    var radid
-    var livevid
-    var hls
-    var arg = []
+    var radid;
+
+
+
+    var livevid;
+    var hls;
+    var arg = [];
     var data = [
       { statnom: "France Inter", statlien: "franceinter" },
       { statnom: "franceinfo", statlien: "franceinfo" },
@@ -511,6 +522,9 @@
       { statnom: "FIP Monde", statlien: "fipworld" },
       { statnom: "FIP Reggae", statlien: "fipreggae" },
       { statnom: "FIP Nouveautés", statlien: "fipnouveautes" },
+      { statnom: "FIP Métal", statlien: "fipmetal" },
+      { statnom: "FIP Hip-Hop", statlien: "fiphiphop" },
+
       { statnom: "Mouv' Rap Français", statlien: "mouvrapfr" },
       { statnom: "Mouv' 100% Mix", statlien: "mouv100p100mix" },
       { statnom: "Mouv' Classics", statlien: "mouvclassics" },
@@ -563,7 +577,7 @@
       { statnom: "France Bleu Occitanie", statlien: "fbtoulouse" },
       { statnom: "France Bleu Touraine", statlien: "fbtouraine" },
       { statnom: "France Bleu Vaucluse", statlien: "fbvaucluse" },
-    ]
+    ];
 
     function link(rep) {
       var heur = document.getElementById("heur").value;
@@ -925,6 +939,9 @@
     }
 
     function ssr() {
+
+      console.log('ssr ' + radid);
+
       if (radid >= 30) {
         document.getElementById("sr1").selectedIndex = 3
         sr()
@@ -937,7 +954,7 @@
         document.getElementById("sr4").selectedIndex = radid - 21
         ss(2)
       }
-      if (radid >= 15 && radid <= 22) {
+      if (radid >= 15 && radid <= 24) {
         document.getElementById("sr1").selectedIndex = 7
         sr()
         document.getElementById("sr3").selectedIndex = radid - 13
@@ -1113,6 +1130,42 @@
     <h1 id="titl1">Replay et direct</h1>
     <h1 id="titl2"> </h1>
   </header>
+<div>
+Fip :
+
+<a class="radiobuttons" href="?radio=fip&flux=hifi">Fip</a>
+<a class="radiobuttons" href="?radio=fiprock&flux=hifi">Fip Rock</a>
+<a class="radiobuttons" href="?radio=fipjazz&flux=hifi">Fip Jazz</a>
+<a class="radiobuttons" href="?radio=fipgroove&flux=hifi">Fip Groove</a>
+<a class="radiobuttons" href="?radio=fippop&flux=hifi">Fip Pop</a>
+<a class="radiobuttons" href="?radio=fipelectro&flux=hifi">Fip Electro</a>
+<a class="radiobuttons" href="?radio=fipworld&flux=hifi">Fip Monde</a>
+<a class="radiobuttons" href="?radio=fipreggae&flux=hifi">Fip Reggae</a>
+<a class="radiobuttons" href="?radio=fipnouveautes&flux=hifi">Fip Nouveautés</a>
+<a class="radiobuttons" href="?radio=fipmetal&flux=hifi">Fip Métal</a>
+<a class="radiobuttons" href="?radio=fiphiphop&flux=hifi">Fip Hip-Hop</a>
+
+
+</div>
+<div>
+  France Musique :
+
+  <a class="radiobuttons" href="?radio=francemusique&flux=hifi">France Musique</a>
+  <a class="radiobuttons" href="?radio=francemusiqueeasyclassique&flux=hifi">France Musique Classique Easy</a>
+  <a class="radiobuttons" href="?radio=francemusiquebaroque&flux=hifi">France Musique la Baroque</a>
+  <a class="radiobuttons" href="?radio=francemusiqueclassiqueplus&flux=hifi">France Musique Classique Plus</a>
+  <a class="radiobuttons" href="?radio=francemusiqueconcertsradiofrance&flux=hifi">France Musique Concerts Radio France</a>
+  <a class="radiobuttons" href="?radio=francemusiquelajazz&flux=hifi">France Musique la Jazz</a>
+  <a class="radiobuttons" href="?radio=francemusiquelacontemporaine&flux=hifi">France Musique la Contemporaine</a>
+  <a class="radiobuttons" href="?radio=francemusiqueocoramonde&flux=hifi">France Musique Ocora Musiques du Monde</a>
+  <a class="radiobuttons" href="?radio=francemusiquelabo&flux=hifi">France Musique la B.O. Musiques de Films</a>
+  <a class="radiobuttons" href="?radio=francemusiqueopera&flux=hifi">France Musique Opéra</a>
+
+
+
+</div>
+
+
   <div id="cont" style="width:300px;height:170px">
     <video id="lecteur">
     </video>
@@ -1191,6 +1244,8 @@
       <option>Monde</option>
       <option>Reggae</option>
       <option>Nouveautés</option>
+      <option>Métal</option>
+      <option>Hip-Hop</option>
     </select>
   </div>
   <div id="sopt2">
