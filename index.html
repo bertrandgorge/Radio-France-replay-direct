@@ -16,8 +16,11 @@
   <link rel="apple-touch-icon" href="https://www.radiofrance.fr/dist/favicons/logo-57.png">
   <link rel="apple-touch-icon" sizes="72x72" href="https://www.radiofrance.fr/dist/favicons/logo-72.png">
   <link rel="apple-touch-icon" sizes="114x114" href="https://www.radiofrance.fr/dist/favicons/logo-114.png">
-  <style>
 
+  <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+    integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script> -->
+
+  <style>
     header {
       margin-top: 30px;
       margin-left: 30px;
@@ -468,8 +471,7 @@
       { statnom: "FIP Hip-Hop", statlien: "fiphiphop" }
     ];
 
-    function changeRadio(newRadioCode)
-    {
+    function changeRadio(newRadioCode) {
       radiocode = newRadioCode;
       showRadioTitle();
       go(0);
@@ -485,17 +487,12 @@
       return "https://stream.radiofrance.fr/" + radiocode + "/" + radiocode + qual + ".m3u8";
     }
 
-    function loadScript(script_url) {
-      var head = document.getElementsByTagName('head')[0];
-      var script = document.createElement('script');
-      script.type = 'text/javascript';
-      script.src = script_url;
-      head.appendChild(script);
-    }
 
     function go() {
       var video = document.getElementById("lecteur");
       var source = link();
+
+      console.log(source);
 
       if (!Hls.isSupported()) {
         video.src = source;
@@ -586,8 +583,7 @@
     }
 
     function showRadioTitle() {
-      if (radiocode == '')
-      {
+      if (radiocode == '') {
         document.querySelector("title").innerHTML = document.getElementById("titl2").innerHTML = "Radio France";
         return;
       }
@@ -601,13 +597,15 @@
       }
     }
 
-    function checkX() {
-      var dat = new Date()
-      var tsec = dat.getTime()
-      if (x > 260000) {
-        Move(-1 * tsec)
-      }
-    }
+    // function getCurrentTitle() {
+    //   $.ajax({
+    //     url: "https://www.radiofrance.fr/api/v2.1/stations/fip/webradios/fip",
+
+    //     success: function (result) {
+    //       console.log(result);
+    //     }
+    //   });
+    // }
 
     function getArguments() {
       var base = window.location.search
@@ -684,7 +682,7 @@
   <div id="cont" style="height:170px">
     <video id="lecteur"></video>
 
-    <script src="https://cdn.rawgit.com/video-dev/hls.js/18bb552/dist/hls.min.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@1.3.4/dist/hls.min.js" type="text/javascript"></script>
 
     <button class="play" id="pp" onclick="playClick()">
       <div id="playdiv"></div>
@@ -715,7 +713,8 @@
     <br>La page utilise la bibliothèque hls.js
     <br>Tous les droits reviennent à Radio France
     <br>
-    <br><a href="https://github.com/bertrandgorge/Radio-France-replay-direct" target="_blank">Retrouvez le projet sur Github</a>
+    <br><a href="https://github.com/bertrandgorge/Radio-France-replay-direct" target="_blank">Retrouvez le projet sur
+      Github</a>
   </footer>
 </body>
 
