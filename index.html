@@ -17,8 +17,8 @@
   <link rel="apple-touch-icon" sizes="72x72" href="https://www.radiofrance.fr/dist/favicons/logo-72.png">
   <link rel="apple-touch-icon" sizes="114x114" href="https://www.radiofrance.fr/dist/favicons/logo-114.png">
 
-  <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"
-    integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script> -->
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+    integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
 
   <style>
     header {
@@ -89,54 +89,19 @@
 
     .radiobuttons {
       border: 1px solid;
-      border-radius: 3px;
+      border-radius: 28px;
       padding: 11px;
       display: inline-block;
       background-color: #B4B4B4;
       color: #353535;
       margin: 5px;
       cursor: pointer;
-
     }
 
-    #submit:hover,
-    #submit:focus,
-    #but2:hover,
-    #but2:focus,
-    #blivevid:hover,
-    #blivevid:focus {
+    .radiobuttons:hover,
+    .radiobuttons:focus {
       background-color: #002E65;
       cursor: pointer;
-    }
-
-    #advsubmit:hover,
-    #advsubmit:focus {
-      cursor: pointer;
-    }
-
-    label {
-      font-size: 16px;
-    }
-
-    #arrow {
-      border-top: 9px solid transparent;
-      border-bottom: 9px solid transparent;
-      border-right: 9px solid #E1E1E1;
-      display: inline-block;
-      vertical-align: middle;
-      margin-left: 0.4em;
-      margin-right: 0.4em;
-      transform: rotate(270deg);
-      transition: transform 0.4s ease;
-    }
-
-    #adv {
-      transform: scaleY(0);
-      transition: transform 0.4s ease-out;
-      clear: both;
-      transform-origin: top;
-      margin-left: auto;
-      margin-right: auto;
     }
 
     input.vol {
@@ -216,10 +181,6 @@
       display: none;
     }
 
-    div.preload {
-      display: none;
-    }
-
     a {
       text-decoration: none;
       color: #353535;
@@ -228,58 +189,9 @@
 
     a:hover,
     a:focus {
-      text-decoration: underline;
+      text-decoration: none;
       color: #545454;
     }
-
-    select.selrad {
-      width: 15em;
-      margin-bottom: 15px;
-    }
-
-    select {
-      font-family: Arial;
-      background-color: #F0F0F0;
-      border: 2px solid #353535;
-      color: #353535;
-      border-radius: 2px;
-    }
-
-    #livevid {
-      display: none;
-    }
-
-    #contanim {
-      height: 0px;
-      overflow: hidden;
-      clear: both;
-    }
-
-    ::selection {
-      background-color: #353535;
-      color: #B4B4B4;
-    }
-
-    input[type="number"] {
-      font-family: Arial;
-      background-color: #F0F0F0;
-      border: 2px solid #353535;
-      color: #353535;
-      border-radius: 2px;
-    }
-
-    /* Animations */
-    @keyframes rotate {
-      0% {
-        transform: rotate(0);
-      }
-
-      100% {
-        transform: rotate(1turn);
-      }
-    }
-
-    /* Polices */
 
     /* latin-ext */
     @font-face {
@@ -402,10 +314,6 @@
         background-image: url("https://charte.dnm.radiofrance.fr/images/radiofrance/radio-france-blanc.svg");
       }
 
-      div.hours {
-        color: #A4A4A4;
-      }
-
       a {
         text-decoration: none;
         color: #B4B4B4;
@@ -413,232 +321,12 @@
 
       a:hover,
       a:focus {
-        text-decoration: underline;
+        text-decoration: none;
         color: #969696;
       }
 
-      ::selection {
-        color: #353535;
-        background-color: #E1E1E1;
-      }
-
-      select {
-        background-color: #494949;
-        border: 2px solid #E1E1E1;
-        color: #E1E1E1;
-      }
-
-      input[type="number"] {
-        background-color: #494949;
-        border: 2px solid #E1E1E1;
-        color: #E1E1E1;
-      }
     }
   </style>
-  <script>
-    var dadv = 0;
-    var x;
-    var dela;
-    var blink;
-    var displayTime;
-    var nowPlaying = false;
-
-    var radiocode = 'fip';
-
-    var hls;
-    var arg = [];
-    var data = [
-      { statnom: "France Musique", statlien: "francemusique" },
-      { statnom: "FIP (national)", statlien: "fip" },
-      { statnom: "France Musique Classique Easy", statlien: "francemusiqueeasyclassique" },
-      { statnom: "France Musique la Baroque", statlien: "francemusiquebaroque" },
-      { statnom: "France Musique Classique Plus", statlien: "francemusiqueclassiqueplus" },
-      { statnom: "France Musique Concerts Radio France", statlien: "francemusiqueconcertsradiofrance" },
-      { statnom: "France Musique la Jazz", statlien: "francemusiquelajazz" },
-      { statnom: "France Musique la Contemporaine", statlien: "francemusiquelacontemporaine" },
-      { statnom: "France Musique Ocora Musiques du Monde", statlien: "francemusiqueocoramonde" },
-      { statnom: "France Musique la B.O. Musiques de Films", statlien: "francemusiquelabo" },
-      { statnom: "France Musique Opéra", statlien: "francemusiqueopera" },
-      { statnom: "FIP Rock", statlien: "fiprock" },
-      { statnom: "FIP Jazz", statlien: "fipjazz" },
-      { statnom: "FIP Groove", statlien: "fipgroove" },
-      { statnom: "FIP Pop", statlien: "fippop" },
-      { statnom: "FIP Electro", statlien: "fipelectro" },
-      { statnom: "FIP Monde", statlien: "fipworld" },
-      { statnom: "FIP Reggae", statlien: "fipreggae" },
-      { statnom: "FIP Nouveautés", statlien: "fipnouveautes" },
-      { statnom: "FIP Métal", statlien: "fipmetal" },
-      { statnom: "FIP Hip-Hop", statlien: "fiphiphop" }
-    ];
-
-    function changeRadio(newRadioCode) {
-      radiocode = newRadioCode;
-      showRadioTitle();
-      go(0);
-      return false;
-    }
-
-    function link() {
-      var qual = "_hifi"; // _lofi _midfi;
-
-      if (radiocode == '')
-        return;
-
-      return "https://stream.radiofrance.fr/" + radiocode + "/" + radiocode + qual + ".m3u8";
-    }
-
-
-    function go() {
-      var video = document.getElementById("lecteur");
-      var source = link();
-
-      console.log(source);
-
-      if (!Hls.isSupported()) {
-        video.src = source;
-      } else {
-        hls = new Hls();
-        hls.loadSource(source);
-        hls.attachMedia(video);
-        window.hls = hls;
-      }
-
-      video.play()
-      document.getElementById("son").value = 100
-      document.getElementById("cont").style.display = "inline-block";
-
-      showPauseButton();
-      vol();
-    }
-
-    function showPlayButton() {
-      // Affiche le bouton play
-      document.getElementById("pp").style.backgroundColor = "rgb(0, 93, 203)";
-      document.getElementById("pp").style.border = "none";
-      document.getElementById("pp").style.animation = "none";
-      nowPlaying = false;
-      playdiv.classList.add("divplay")
-      if (playdiv.classList.contains("divpause") == true) {
-        playdiv.classList.remove("divpause");
-      }
-      playdiv.style.display = "block";
-    }
-
-    function showPauseButton() {
-      // Affiche le bouton pause
-      document.getElementById("pp").style.backgroundColor = "rgb(0, 93, 203)";
-      document.getElementById("pp").style.border = "none";
-      document.getElementById("pp").style.animation = "none";
-      nowPlaying = true;
-      playdiv.classList.add("divpause");
-      if (playdiv.classList.contains("divplay") == true) {
-        playdiv.classList.remove("divplay");
-      }
-      playdiv.style.display = "block";
-    }
-
-    function playClick() {
-      var video = document.getElementById("lecteur");
-
-      if (nowPlaying) {
-        video.pause();
-        showPlayButton();
-      }
-      else {
-        video.play();
-        showPauseButton();
-      }
-    }
-
-    function muteClick() {
-      var video = document.getElementById("lecteur");
-      if (video.muted == true) {
-        video.muted = false;
-      } else {
-        video.muted = true;
-      }
-      volDisp();
-    }
-
-    function volDisp() {
-      var video = document.getElementById("lecteur")
-      if (video.muted == true || document.getElementById("son").value == 0) {
-        document.getElementById("mut").style.backgroundImage = "url('https://www.francetvinfo.fr/skin/dist/www/img/player-franceinfo/unmute-8bfc2f00ea.png')";
-      } else {
-        document.getElementById("mut").style.backgroundImage = "url('https://www.francetvinfo.fr/skin/dist/www/img/player-franceinfo/mute-2a46b895c3.png')";
-      }
-    }
-
-    function vol() {
-      var video = document.getElementById("lecteur");
-      var slider = document.getElementById("son");
-      video.volume = slider.value / 100;
-      volDisp();
-
-      slider.oninput = function () {
-        var video = document.getElementById("lecteur");
-        video.volume = this.value / 100;
-        volDisp();
-      }
-    }
-
-    function showRadioTitle() {
-      if (radiocode == '') {
-        document.querySelector("title").innerHTML = document.getElementById("titl2").innerHTML = "Radio France";
-        return;
-      }
-
-      var z;
-      for (z = 0; z < data.length; z++) {
-        if (radiocode == data[z].statlien) {
-          document.querySelector("title").innerHTML = document.getElementById("titl2").innerHTML = data[z].statnom;
-          break;
-        }
-      }
-    }
-
-    // function getCurrentTitle() {
-    //   $.ajax({
-    //     url: "https://www.radiofrance.fr/api/v2.1/stations/fip/webradios/fip",
-
-    //     success: function (result) {
-    //       console.log(result);
-    //     }
-    //   });
-    // }
-
-    function getArguments() {
-      var base = window.location.search
-      base = base.slice(1, base.length)
-      var tmparguments = base.split("&")
-      var k
-      for (k = 0; k < tmparguments.length; k++) {
-        var tmpsplit = tmparguments[k].split("=")
-        if (arg.length == 0) {
-          arg = [tmpsplit[0], tmpsplit[1]]
-        } else {
-          arg.push(tmpsplit[0])
-          arg.push(tmpsplit[1])
-        }
-      }
-    }
-
-    function checkArguments() {
-      var y
-      for (y = 0; y < arg.length; y = y + 2) {
-        if (arg[y] == "radio") {
-          var z;
-          for (z = 0; z < data.length; z++) {
-            if (arg[y + 1] == data[z].statlien) {
-              changeRadio(data[z].statlien);
-              break;
-            }
-          }
-        }
-      }
-    }
-
-  </script>
 </head>
 
 <body>
@@ -660,9 +348,8 @@
     <a class="radiobuttons" onclick="return changeRadio('fipnouveautes');">Nouveautés</a>
     <a class="radiobuttons" onclick="return changeRadio('fipmetal');">Métal</a>
     <a class="radiobuttons" onclick="return changeRadio('fiphiphop');">Hip-Hop</a>
-
-
   </div>
+  <br />
   <div>
     France Musique :
 
@@ -677,8 +364,11 @@
     <a class="radiobuttons" onclick="return changeRadio('francemusiquelabo');">B.O. Musiques de Films</a>
     <a class="radiobuttons" onclick="return changeRadio('francemusiqueopera');">Opéra</a>
   </div>
-
-
+  <div>
+      <p><span id="song_title"></span></p>
+      <p><span id="song_authors"></span> <span id="song_album"></span> <span id="song_date"></span></p>
+  </div>
+  <br />
   <div id="cont" style="height:170px">
     <video id="lecteur"></video>
 
@@ -692,20 +382,6 @@
   </div>
 
 
-  <script>
-
-    changeRadio('fip');
-    getArguments();
-    checkArguments();
-    showPlayButton();
-
-  </script>
-
-  <div class="preload">
-    <img src="https://www.francetvinfo.fr/skin/dist/www/img/player-franceinfo/unmute-8bfc2f00ea.png">
-    <img src="https://www.francetvinfo.fr/skin/dist/www/img/player-franceinfo/mute-2a46b895c3.png">
-  </div>
-
   <footer>
     <div style="font-size: 12px;">
       Fip et France musique rapide<br>
@@ -718,4 +394,245 @@
   </footer>
 </body>
 
+<script>
+
+  var nowPlaying = false;
+
+  var radiocode = 'fip';
+
+  var hls;
+  const radios = new Map();
+
+  radios.set('fip', {'display': "FIP (national)", 'apiId': "FIP"});
+  radios.set('fiprock', {'display': "FIP Rock", 'apiId': "FIP_ROCK"});
+  radios.set('fipjazz', {'display': "FIP Jazz", 'apiId': "FIP_JAZZ"});
+  radios.set('fipgroove', {'display': "FIP Groove", 'apiId': "FIP_GROOVE"});
+  radios.set('fippop', {'display': "FIP Pop", 'apiId': "FIP_POP"});
+  radios.set('fipelectro', {'display': "FIP Electro", 'apiId': "FIP_ELECTRO"});
+  radios.set('fipworld', {'display': "FIP Monde", 'apiId': "FIP_WORLD"});
+  radios.set('fipreggae', {'display': "FIP Reggae", 'apiId': "FIP_REGGAE"});
+  radios.set('fipnouveautes', {'display': "FIP Nouveautés", 'apiId': "FIP_NOUVEAUTES"});
+  radios.set('fipmetal', {'display': "FIP Métal", 'apiId': "FIP_METAL"});
+  radios.set('fiphiphop', {'display': "FIP Hip-Hop", 'apiId': ""});
+
+  radios.set('francemusique', {'display': "France Musique", 'apiId': "FRANCEMUSIQUE"});
+  radios.set('francemusiqueeasyclassique', {'display': "France Musique Classique Easy", 'apiId': "FRANCEMUSIQUE_CLASSIQUE_EASY"});
+  radios.set('francemusiquebaroque', {'display': "France Musique la Baroque", 'apiId': ""});
+  radios.set('francemusiqueclassiqueplus', {'display': "France Musique Classique Plus", 'apiId': "FRANCEMUSIQUE_CLASSIQUE_PLUS"});
+  radios.set('francemusiqueconcertsradiofrance', {'display': "France Musique Concerts Radio France", 'apiId': "FRANCEMUSIQUE_CONCERT_RF"});
+  radios.set('francemusiquelajazz', {'display': "France Musique la Jazz", 'apiId': "FRANCEMUSIQUE_LA_JAZZ"});
+  radios.set('francemusiquelacontemporaine', {'display': "France Musique la Contemporaine", 'apiId': "FRANCEMUSIQUE_LA_CONTEMPORAINE"});
+  radios.set('francemusiqueocoramonde', {'display': "France Musique Ocora Musiques du Monde", 'apiId': "FRANCEMUSIQUE_OCORA_MONDE"});
+  radios.set('francemusiquelabo', {'display': "France Musique la B.O. Musiques de Films", 'apiId': ""});
+  radios.set('francemusiqueopera', {'display': "France Musique Opéra", 'apiId': ""});
+
+  function changeRadio(newRadioCode) {
+    radiocode = newRadioCode;
+    showRadioTitle();
+    go(0);
+    return false;
+  }
+
+  function link() {
+    var qual = "_hifi"; // _lofi _midfi;
+
+    if (radiocode == '')
+      return;
+
+    return "https://stream.radiofrance.fr/" + radiocode + "/" + radiocode + qual + ".m3u8";
+  }
+
+  function go() {
+    var video = document.getElementById("lecteur");
+    var source = link();
+
+    console.log(source);
+
+    if (!Hls.isSupported()) {
+      video.src = source;
+    } else {
+      hls = new Hls();
+      hls.loadSource(source);
+      hls.attachMedia(video);
+      window.hls = hls;
+    }
+
+    video.play()
+    document.getElementById("son").value = 100
+    document.getElementById("cont").style.display = "inline-block";
+
+    showPauseButton();
+    vol();
+  }
+
+  function showPlayButton() {
+    // Affiche le bouton play
+    document.getElementById("pp").style.backgroundColor = "rgb(0, 93, 203)";
+    document.getElementById("pp").style.border = "none";
+    document.getElementById("pp").style.animation = "none";
+    nowPlaying = false;
+    playdiv.classList.add("divplay")
+    if (playdiv.classList.contains("divpause") == true) {
+      playdiv.classList.remove("divpause");
+    }
+    playdiv.style.display = "block";
+  }
+
+  function showPauseButton() {
+    // Affiche le bouton pause
+    document.getElementById("pp").style.backgroundColor = "rgb(0, 93, 203)";
+    document.getElementById("pp").style.border = "none";
+    document.getElementById("pp").style.animation = "none";
+    nowPlaying = true;
+    playdiv.classList.add("divpause");
+    if (playdiv.classList.contains("divplay") == true) {
+      playdiv.classList.remove("divplay");
+    }
+    playdiv.style.display = "block";
+  }
+
+  function playClick() {
+    var video = document.getElementById("lecteur");
+
+    if (nowPlaying) {
+      video.pause();
+      showPlayButton();
+    }
+    else {
+      video.play();
+      showPauseButton();
+    }
+  }
+
+  function muteClick() {
+    var video = document.getElementById("lecteur");
+    if (video.muted == true) {
+      video.muted = false;
+    } else {
+      video.muted = true;
+    }
+    volDisp();
+  }
+
+  function volDisp() {
+    var video = document.getElementById("lecteur")
+    if (video.muted == true || document.getElementById("son").value == 0) {
+      document.getElementById("mut").style.backgroundImage = "url('https://www.francetvinfo.fr/skin/dist/www/img/player-franceinfo/unmute-8bfc2f00ea.png')";
+    } else {
+      document.getElementById("mut").style.backgroundImage = "url('https://www.francetvinfo.fr/skin/dist/www/img/player-franceinfo/mute-2a46b895c3.png')";
+    }
+  }
+
+  function vol() {
+    var video = document.getElementById("lecteur");
+    var slider = document.getElementById("son");
+    video.volume = slider.value / 100;
+    volDisp();
+
+    slider.oninput = function () {
+      var video = document.getElementById("lecteur");
+      video.volume = this.value / 100;
+      volDisp();
+    }
+  }
+
+  function showRadioTitle() {
+    if (!radios.has(radiocode)) {
+      document.querySelector("title").innerHTML = document.getElementById("titl2").innerHTML = "Radio France";
+      return;
+    }
+
+    document.querySelector("title").innerHTML = document.getElementById("titl2").innerHTML = radios.get(radiocode).display;
+  }
+
+  function getCurrentTitle() {
+
+    if (!radios.has(radiocode))
+      return;
+
+    var ApiId = radios.get(radiocode).apiId;
+
+    if (ApiId == '')
+      return;
+
+    $.ajax({
+      url: "https://openapi.radiofrance.fr/v1/graphql?x-token=YOUR_TOKEN_HERE",
+      method: 'POST',
+      dataType: "json",
+      contentType: "application/json",
+      data: JSON.stringify({query: `{
+               live(station: ` + ApiId + `)
+               {
+                  song {
+                      id
+                      start
+                      end
+                      track {
+                        id
+                        title
+                        albumTitle
+                        authors
+                        mainArtists
+                        productionDate
+                        composers
+                      }
+                }
+              }
+            }`}),
+      success: function (result) {
+        console.log(result);
+
+        if (result.data.live.song == null)
+        {
+          document.getElementById("song_title").innerHTML = "";
+          document.getElementById("song_authors").innerHTML = "";
+          document.getElementById("song_album").innerHTML = "";
+          document.getElementById("song_date").innerHTML = "";
+        }
+        else
+        {
+          document.getElementById("song_title").innerHTML = result.data.live.song.track.title;
+          document.getElementById("song_authors").innerHTML = result.data.live.song.track.mainArtists + " " + result.data.live.song.track.composers.join(", ");
+          document.getElementById("song_album").innerHTML = " - " + result.data.live.song.track.albumTitle;
+          document.getElementById("song_date").innerHTML = result.data.live.song.track.productionDate;
+        }
+      }
+    });
+  }
+
+  function getArguments() {
+    var arg = [];
+
+    var base = window.location.search;
+    base = base.slice(1, base.length);
+    var tmparguments = base.split("&");
+    var k;
+    for (k = 0; k < tmparguments.length; k++) {
+      var tmpsplit = tmparguments[k].split("=");
+      if (arg.length == 0) {
+        arg = [tmpsplit[0], tmpsplit[1]];
+      } else {
+        arg.push(tmpsplit[0]);
+        arg.push(tmpsplit[1]);
+      }
+    }
+
+    var y;
+    for (y = 0; y < arg.length; y = y + 2)
+    {
+      if (arg[y] == "radio")
+      {
+        if (radios.has(arg[y + 1]))
+          changeRadio(arg[y + 1]);
+        break;
+      }
+    }
+  }
+
+  changeRadio('fip');
+  getArguments();
+  showPlayButton();
+
+  setInterval(getCurrentTitle, 5000);
+</script>
 </html>
