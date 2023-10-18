@@ -43,10 +43,9 @@
       margin-bottom: 20px;
     }
 
-    h1 {
-      margin-top: 0px;
+    h3 {
       color: #161616;
-      font-size: 35px;
+      font-size: 30px;
       margin-bottom: 0px;
       font-family: Montserrat Subrayada;
       font-weight: normal;
@@ -99,8 +98,10 @@
     }
 
     .radiobuttons:hover,
-    .radiobuttons:focus {
+    .radiobuttons:focus,
+    .currently-playing {
       background-color: #002E65;
+      color: #B4B4B4;
       cursor: pointer;
     }
 
@@ -302,7 +303,7 @@
         color: #B4B4B4;
       }
 
-      h1 {
+      h3 {
         color: #D1D1D1;
       }
 
@@ -332,39 +333,41 @@
 <body>
   <header>
     <div class="img-top"></div>
-    <h1 id="titl2"> </h1>
   </header>
   <div>
     Fip :
 
-    <a class="radiobuttons" onclick="return changeRadio('fip');">Fip</a>
-    <a class="radiobuttons" onclick="return changeRadio('fiprock');">Rock</a>
-    <a class="radiobuttons" onclick="return changeRadio('fipjazz');">Jazz</a>
-    <a class="radiobuttons" onclick="return changeRadio('fipgroove');">Groove</a>
-    <a class="radiobuttons" onclick="return changeRadio('fippop');">Pop</a>
-    <a class="radiobuttons" onclick="return changeRadio('fipelectro');">Electro</a>
-    <a class="radiobuttons" onclick="return changeRadio('fipworld');">Monde</a>
-    <a class="radiobuttons" onclick="return changeRadio('fipreggae');">Reggae</a>
-    <a class="radiobuttons" onclick="return changeRadio('fipnouveautes');">Nouveautés</a>
-    <a class="radiobuttons" onclick="return changeRadio('fipmetal');">Métal</a>
-    <a class="radiobuttons" onclick="return changeRadio('fiphiphop');">Hip-Hop</a>
+    <a id="button_fip" class="radiobuttons" onclick="return changeRadio('fip');">Fip</a>
+    <a id="button_fiprock" class="radiobuttons" onclick="return changeRadio('fiprock');">Rock</a>
+    <a id="button_fipjazz" class="radiobuttons" onclick="return changeRadio('fipjazz');">Jazz</a>
+    <a id="button_fipgroove" class="radiobuttons" onclick="return changeRadio('fipgroove');">Groove</a>
+    <a id="button_fippop" class="radiobuttons" onclick="return changeRadio('fippop');">Pop</a>
+    <a id="button_fipelectro" class="radiobuttons" onclick="return changeRadio('fipelectro');">Electro</a>
+    <a id="button_fipworld" class="radiobuttons" onclick="return changeRadio('fipworld');">Monde</a>
+    <a id="button_fipreggae" class="radiobuttons" onclick="return changeRadio('fipreggae');">Reggae</a>
+    <a id="button_fipnouveautes" class="radiobuttons" onclick="return changeRadio('fipnouveautes');">Nouveautés</a>
+    <a id="button_fipmetal" class="radiobuttons" onclick="return changeRadio('fipmetal');">Métal</a>
+    <a id="button_fiphiphop" class="radiobuttons" onclick="return changeRadio('fiphiphop');">Hip-Hop</a>
+    <a id="button_fipsacrefrancais" class="radiobuttons" onclick="return changeRadio('fipsacrefrancais');">Sacré Français</a>
   </div>
   <br />
   <div>
     France Musique :
 
-    <a class="radiobuttons" onclick="return changeRadio('francemusique');">France Musique</a>
-    <a class="radiobuttons" onclick="return changeRadio('francemusiqueeasyclassique');">Classique Easy</a>
-    <a class="radiobuttons" onclick="return changeRadio('francemusiquebaroque');">Baroque</a>
-    <a class="radiobuttons" onclick="return changeRadio('francemusiqueclassiqueplus');">Classique Plus</a>
-    <a class="radiobuttons" onclick="return changeRadio('francemusiqueconcertsradiofrance');">Concerts Radio France</a>
-    <a class="radiobuttons" onclick="return changeRadio('francemusiquelajazz');">Jazz</a>
-    <a class="radiobuttons" onclick="return changeRadio('francemusiquelacontemporaine');">Contemporaine</a>
-    <a class="radiobuttons" onclick="return changeRadio('francemusiqueocoramonde');">Ocora Musiques du Monde</a>
-    <a class="radiobuttons" onclick="return changeRadio('francemusiquelabo');">B.O. Musiques de Films</a>
-    <a class="radiobuttons" onclick="return changeRadio('francemusiqueopera');">Opéra</a>
+    <a id="button_francemusique" class="radiobuttons" onclick="return changeRadio('francemusique');">France Musique</a>
+    <a id="button_francemusiqueeasyclassique" class="radiobuttons" onclick="return changeRadio('francemusiqueeasyclassique');">Classique Easy</a>
+    <a id="button_francemusiquebaroque" class="radiobuttons" onclick="return changeRadio('francemusiquebaroque');">Baroque</a>
+    <a id="button_francemusiqueclassiqueplus" class="radiobuttons" onclick="return changeRadio('francemusiqueclassiqueplus');">Classique Plus</a>
+    <a id="button_francemusiqueconcertsradiofrance" class="radiobuttons" onclick="return changeRadio('francemusiqueconcertsradiofrance');">Concerts Radio France</a>
+    <a id="button_francemusiquelajazz" class="radiobuttons" onclick="return changeRadio('francemusiquelajazz');">Jazz</a>
+    <a id="button_francemusiquelacontemporaine" class="radiobuttons" onclick="return changeRadio('francemusiquelacontemporaine');">Contemporaine</a>
+    <a id="button_francemusiqueocoramonde" class="radiobuttons" onclick="return changeRadio('francemusiqueocoramonde');">Ocora Musiques du Monde</a>
+    <a id="button_francemusiquelabo" class="radiobuttons" onclick="return changeRadio('francemusiquelabo');">B.O. Musiques de Films</a>
+    <a id="button_francemusiqueopera" class="radiobuttons" onclick="return changeRadio('francemusiqueopera');">Opéra</a>
   </div>
+  <br />
   <div>
+      <h3 id="titl2"> </h3>
       <p><span id="song_title"></span></p>
       <p><span id="song_authors"></span> <span id="song_album"></span> <span id="song_date"></span></p>
   </div>
@@ -413,23 +416,27 @@
   radios.set('fipreggae', {'display': "FIP Reggae", 'apiId': "FIP_REGGAE"});
   radios.set('fipnouveautes', {'display': "FIP Nouveautés", 'apiId': "FIP_NOUVEAUTES"});
   radios.set('fipmetal', {'display': "FIP Métal", 'apiId': "FIP_METAL"});
-  radios.set('fiphiphop', {'display': "FIP Hip-Hop", 'apiId': ""});
+  radios.set('fiphiphop', {'display': "FIP Hip-Hop", 'apiId': "FIP_HIP_HOP"});
+  radios.set('fipsacrefrancais', {'display': "FIP Sacré français", 'apiId': "FIP_SACRE_FRANCAIS"});
 
   radios.set('francemusique', {'display': "France Musique", 'apiId': "FRANCEMUSIQUE"});
   radios.set('francemusiqueeasyclassique', {'display': "France Musique Classique Easy", 'apiId': "FRANCEMUSIQUE_CLASSIQUE_EASY"});
-  radios.set('francemusiquebaroque', {'display': "France Musique la Baroque", 'apiId': ""});
+  radios.set('francemusiquebaroque', {'display': "France Musique la Baroque", 'apiId': "FRANCEMUSIQUE_LA_BAROQUE"});
   radios.set('francemusiqueclassiqueplus', {'display': "France Musique Classique Plus", 'apiId': "FRANCEMUSIQUE_CLASSIQUE_PLUS"});
   radios.set('francemusiqueconcertsradiofrance', {'display': "France Musique Concerts Radio France", 'apiId': "FRANCEMUSIQUE_CONCERT_RF"});
   radios.set('francemusiquelajazz', {'display': "France Musique la Jazz", 'apiId': "FRANCEMUSIQUE_LA_JAZZ"});
   radios.set('francemusiquelacontemporaine', {'display': "France Musique la Contemporaine", 'apiId': "FRANCEMUSIQUE_LA_CONTEMPORAINE"});
   radios.set('francemusiqueocoramonde', {'display': "France Musique Ocora Musiques du Monde", 'apiId': "FRANCEMUSIQUE_OCORA_MONDE"});
-  radios.set('francemusiquelabo', {'display': "France Musique la B.O. Musiques de Films", 'apiId': ""});
-  radios.set('francemusiqueopera', {'display': "France Musique Opéra", 'apiId': ""});
+  radios.set('francemusiquelabo', {'display': "France Musique la B.O. Musiques de Films", 'apiId': "FRANCEMUSIQUE_LA_BO"});
+  radios.set('francemusiqueopera', {'display': "France Musique Opéra", 'apiId': "FRANCEMUSIQUE_OPERA"});
 
   function changeRadio(newRadioCode) {
+    $("#button_" + radiocode).removeClass("currently-playing");
+    $("#button_" + newRadioCode).addClass("currently-playing");
     radiocode = newRadioCode;
-    showRadioTitle();
+    showRadioName();
     go(0);
+    getCurrentTitle();
     return false;
   }
 
@@ -536,7 +543,7 @@
     }
   }
 
-  function showRadioTitle() {
+  function showRadioName() {
     if (!radios.has(radiocode)) {
       document.querySelector("title").innerHTML = document.getElementById("titl2").innerHTML = "Radio France";
       return;
@@ -555,8 +562,14 @@
     if (ApiId == '')
       return;
 
+    if (document.visibilityState != 'visible')
+    {
+      console.log('delaying title update - browser is hidden');
+      return;
+    }
+
     $.ajax({
-      url: "https://openapi.radiofrance.fr/v1/graphql?x-token=YOUR_TOKEN_HERE",
+      url: "https://openapi.radiofrance.fr/v1/graphql?x-token=92e33e3e-f6dd-49c7-a8cb-efdbce104fbe",
       method: 'POST',
       dataType: "json",
       contentType: "application/json",
@@ -633,6 +646,6 @@
   getArguments();
   showPlayButton();
 
-  setInterval(getCurrentTitle, 5000);
+  setInterval(getCurrentTitle, 30000);
 </script>
 </html>
