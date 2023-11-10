@@ -529,10 +529,6 @@
       cjs.cast(source, {title: radios.get(radiocode).display});
 
       startUpdatingStatus();
-
-      setTimeout(() => {
-        cjs.play();
-      }, 2000);
   }
 
   function updateChromecastStatus()
@@ -600,7 +596,6 @@
       else
         startChromecastMusic();
     }
-
   }
 
   function isLocalMusicPlaying() {
