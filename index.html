@@ -794,11 +794,17 @@
       if (title.length == 0)
         title = radioName;
 
+      if (date.length > 0)
+        album = album + " (" + date + ")";
+
+      if (title.length == 0)
+        title = radioName;
+
       navigator.mediaSession.metadata = new MediaMetadata(
         {
           title: title,
           artist: authors,
-          album: album + " (" + date + ")"
+          album: album
         });
     }
   }
