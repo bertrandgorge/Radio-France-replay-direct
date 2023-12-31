@@ -481,6 +481,8 @@
     $("#button_" + newRadioCode).addClass("currently-playing");
     radiocode = newRadioCode;
 
+    showRadioName();
+
     playMusic();
     getCurrentTitle();
     return false;
@@ -715,7 +717,6 @@
     if (!("mediaSession" in navigator) &&
       document.visibilityState != 'visible') {
       console.log('delaying title update - browser is hidden');
-      setMetadata("", "", "", "");
       return;
     }
 
@@ -745,19 +746,22 @@
               }
             }`}),
       success: function (result) {
-        if (result.data.live.song == null) {
-          setMetadata("", "", "", "");
-        }
-        else {
+        if (result.data.live.song != null) {
           setMetadata(result.data.live.song.track.title,
-            result.data.live.song.track.mainArtists + " " + result.data.live.song.track.composers.join(", "),
-            result.data.live.song.track.albumTitle,
-            result.data.live.song.track.productionDate);
+                      result.data.live.song.track.mainArtists + " " + result.data.live.song.track.composers.join(", "),
+                      result.data.live.song.track.albumTitle,
+                      result.data.live.song.track.productionDate);
         }
       }
     }).fail(function (jqXHR, textStatus, errorThrown) {
-      setMetadata("", "", "", "");
+
     });
+  }
+
+  function showRadioName()
+  {
+    let radioName = radios.get(radiocode).display;
+    setMetadata(radioName, "", "", "");
   }
 
   function setMetadata(title, authors, album, date) {
