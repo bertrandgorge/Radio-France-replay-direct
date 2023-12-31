@@ -70,7 +70,7 @@
       transition: 0.2s;
     }
 
-    .radiobuttons {
+    .stationbutton {
       border: 1px solid;
       border-radius: 28px;
       padding: 11px;
@@ -81,8 +81,25 @@
       cursor: pointer;
     }
 
-    .radiobuttons:hover,
-    .radiobuttons:focus,
+    .fip {
+      background-color: #e2007a;
+      color: #ffffff;
+    }
+    .francemusique {
+      background-color: #a90042;
+      color: #ffffff;
+    }
+    .franceinter {
+      background-color: #e20134;
+      color: #ffffff;
+    }
+    .franceinfo {
+      background-color: #ffc300;
+      color: #181b1f;
+    }
+
+    .stationbutton:hover,
+    .stationbutton:focus,
     .currently-playing {
       background-color: #002E65;
       color: #B4B4B4;
@@ -366,49 +383,49 @@
   <div>
     Fip :
 
-    <a id="button_fip" class="radiobuttons" onclick="return changeRadio('fip');">Fip</a>
-    <a id="button_fiprock" class="radiobuttons" onclick="return changeRadio('fiprock');">Rock</a>
-    <a id="button_fipjazz" class="radiobuttons" onclick="return changeRadio('fipjazz');">Jazz</a>
-    <a id="button_fipgroove" class="radiobuttons" onclick="return changeRadio('fipgroove');">Groove</a>
-    <a id="button_fippop" class="radiobuttons" onclick="return changeRadio('fippop');">Pop</a>
-    <a id="button_fipelectro" class="radiobuttons" onclick="return changeRadio('fipelectro');">Electro</a>
-    <a id="button_fipworld" class="radiobuttons" onclick="return changeRadio('fipworld');">Monde</a>
-    <a id="button_fipreggae" class="radiobuttons" onclick="return changeRadio('fipreggae');">Reggae</a>
-    <a id="button_fipnouveautes" class="radiobuttons" onclick="return changeRadio('fipnouveautes');">Nouveautés</a>
-    <a id="button_fipmetal" class="radiobuttons" onclick="return changeRadio('fipmetal');">Métal</a>
-    <a id="button_fiphiphop" class="radiobuttons" onclick="return changeRadio('fiphiphop');">Hip-Hop</a>
-    <a id="button_fipsacrefrancais" class="radiobuttons" onclick="return changeRadio('fipsacrefrancais');">Sacré
+    <a id="button_fip" class="stationbutton fip" onclick="return changeRadio('fip');">Fip</a>
+    <a id="button_fiprock" class="stationbutton fip" onclick="return changeRadio('fiprock');">Rock</a>
+    <a id="button_fipjazz" class="stationbutton fip" onclick="return changeRadio('fipjazz');">Jazz</a>
+    <a id="button_fipgroove" class="stationbutton fip" onclick="return changeRadio('fipgroove');">Groove</a>
+    <a id="button_fippop" class="stationbutton fip" onclick="return changeRadio('fippop');">Pop</a>
+    <a id="button_fipelectro" class="stationbutton fip" onclick="return changeRadio('fipelectro');">Electro</a>
+    <a id="button_fipworld" class="stationbutton fip" onclick="return changeRadio('fipworld');">Monde</a>
+    <a id="button_fipreggae" class="stationbutton fip" onclick="return changeRadio('fipreggae');">Reggae</a>
+    <a id="button_fipnouveautes" class="stationbutton fip" onclick="return changeRadio('fipnouveautes');">Nouveautés</a>
+    <a id="button_fipmetal" class="stationbutton fip" onclick="return changeRadio('fipmetal');">Métal</a>
+    <a id="button_fiphiphop" class="stationbutton fip" onclick="return changeRadio('fiphiphop');">Hip-Hop</a>
+    <a id="button_fipsacrefrancais" class="stationbutton fip" onclick="return changeRadio('fipsacrefrancais');">Sacré
       Français</a>
   </div>
   <br />
   <div>
     France Musique :
 
-    <a id="button_francemusique" class="radiobuttons" onclick="return changeRadio('francemusique');">France Musique</a>
-    <a id="button_francemusiqueeasyclassique" class="radiobuttons"
+    <a id="button_francemusique" class="stationbutton francemusique onclick="return changeRadio('francemusique');">France Musique</a>
+    <a id="button_francemusiqueeasyclassique" class="stationbutton francemusique"
       onclick="return changeRadio('francemusiqueeasyclassique');">Classique Easy</a>
-    <a id="button_francemusiquebaroque" class="radiobuttons"
+    <a id="button_francemusiquebaroque" class="stationbutton francemusique"
       onclick="return changeRadio('francemusiquebaroque');">Baroque</a>
-    <a id="button_francemusiqueclassiqueplus" class="radiobuttons"
+    <a id="button_francemusiqueclassiqueplus" class="stationbutton francemusique"
       onclick="return changeRadio('francemusiqueclassiqueplus');">Classique Plus</a>
-    <a id="button_francemusiqueconcertsradiofrance" class="radiobuttons"
+    <a id="button_francemusiqueconcertsradiofrance" class="stationbutton francemusique"
       onclick="return changeRadio('francemusiqueconcertsradiofrance');">Concerts Radio France</a>
-    <a id="button_francemusiquelajazz" class="radiobuttons"
+    <a id="button_francemusiquelajazz" class="stationbutton francemusique"
       onclick="return changeRadio('francemusiquelajazz');">Jazz</a>
-    <a id="button_francemusiquelacontemporaine" class="radiobuttons"
+    <a id="button_francemusiquelacontemporaine" class="stationbutton francemusique"
       onclick="return changeRadio('francemusiquelacontemporaine');">Contemporaine</a>
-    <a id="button_francemusiqueocoramonde" class="radiobuttons"
+    <a id="button_francemusiqueocoramonde" class="stationbutton francemusique"
       onclick="return changeRadio('francemusiqueocoramonde');">Ocora Musiques du Monde</a>
-    <a id="button_francemusiquelabo" class="radiobuttons" onclick="return changeRadio('francemusiquelabo');">B.O.
+    <a id="button_francemusiquelabo" class="stationbutton francemusique" onclick="return changeRadio('francemusiquelabo');">B.O.
       Musiques de Films</a>
-    <a id="button_francemusiqueopera" class="radiobuttons" onclick="return changeRadio('francemusiqueopera');">Opéra</a>
+    <a id="button_francemusiqueopera" class="stationbutton francemusique" onclick="return changeRadio('francemusiqueopera');">Opéra</a>
   </div>
   <br />
   <div>
     Infos :
 
-    <a id="button_franceinter" class="radiobuttons" onclick="return changeRadio('franceinter');">France Inter</a>
-    <a id="button_franceinfo" class="radiobuttons" onclick="return changeRadio('franceinfo');">France Info</a>
+    <a id="button_franceinter" class="stationbutton franceinter" onclick="return changeRadio('franceinter');">France Inter</a>
+    <a id="button_franceinfo" class="stationbutton franceinfo" onclick="return changeRadio('franceinfo');">France Info</a>
   </div>
   <br />
   <div>
@@ -438,10 +455,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/castjs/5.2.0/cast.min.js"></script>
 <script>
 
-  var playingLocal = true; // false for cast
-  var radiocode = 'fip';
-  var chromecastState = 0;
-  var chromecastStateInterval = null;
+  let playingLocal = true; // false for cast
+  let radiocode = 'fip';
+  let chromecastState = 0;
+  let chromecastStateInterval = null;
+  let titleInterval = null;
 
   // Create new Castjs instance
   const cjs = new Castjs();
@@ -632,12 +650,15 @@
     var video = document.getElementById("lecteur");
     video.pause();
     showPlayButton();
+    clearInterval(titleInterval);
+    titleInterval = null;
   }
 
   function startLocalMusic() {
     var video = document.getElementById("lecteur");
     video.play();
     showPauseButton();
+    titleInterval = setTimeout(getCurrentTitle, 30000);
   }
 
   function muteClick() {
@@ -702,6 +723,7 @@
   }
 
   function getCurrentTitle() {
+    titleInterval = null;
 
     if (!isMusicPlaying())
     {
@@ -751,6 +773,8 @@
                       result.data.live.song.track.mainArtists + " " + result.data.live.song.track.composers.join(", "),
                       result.data.live.song.track.albumTitle,
                       result.data.live.song.track.productionDate);
+
+          titleInterval = setTimeout(getCurrentTitle, 30000);
         }
       }
     }).fail(function (jqXHR, textStatus, errorThrown) {
@@ -762,6 +786,7 @@
   {
     let radioName = radios.get(radiocode).display;
     setMetadata(radioName, "", "", "");
+    titleInterval = setTimeout(getCurrentTitle, 4000);
   }
 
   function setMetadata(title, authors, album, date) {
@@ -842,11 +867,14 @@
   function pauseChromecastMusic()
   {
     cjs.pause();
+    clearTimeout(titleInterval);
+    titleInterval = null;
   }
 
   function startChromecastMusic()
   {
     cjs.play();
+    titleInterval = setTimeout(getCurrentTitle, 30000);
   }
 
   function setupChromecast()
@@ -940,7 +968,7 @@
   showPlayButton();
   setupChromecast();
 
-  setInterval(getCurrentTitle, 30000);
+  titleInterval = setTimeout(getCurrentTitle, 30000);
 
   navigator.mediaSession.setActionHandler('previoustrack', function () {
     let radioCodes = Array.from(radios.keys());
