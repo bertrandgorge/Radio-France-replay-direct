@@ -730,14 +730,14 @@
     
     titleInterval = setTimeout(getCurrentTitle, time * 1000);
 
-    $("#debugspan").html(titleInterval);
+    // $("#debugspan").html(titleInterval);
   }
 
   function clearTitleInterval()
   {
     clearInterval(titleInterval);
     titleInterval = null;
-    $("#debugspan").html("");
+    // $("#debugspan").html("");
   }
 
   function getCurrentTitle() {
