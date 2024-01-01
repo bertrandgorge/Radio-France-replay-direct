@@ -448,7 +448,7 @@
   </div>
 
   <footer>
-    <a href="https://github.com/bertrandgorge/Radio-France-replay-direct" target="_blank">Github</a>
+    <a id="debugspan" href="https://github.com/bertrandgorge/Radio-France-replay-direct" target="_blank">Github</a>
   </footer>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/hls.js@1.4.12/dist/hls.min.js"></script>
@@ -650,15 +650,14 @@
     var video = document.getElementById("lecteur");
     video.pause();
     showPlayButton();
-    clearInterval(titleInterval);
-    titleInterval = null;
+    clearTitleInterval();
   }
 
   function startLocalMusic() {
     var video = document.getElementById("lecteur");
     video.play();
     showPauseButton();
-    titleInterval = setTimeout(getCurrentTitle, 30000);
+    startTitleInterval(30);
   }
 
   function muteClick() {
@@ -722,6 +721,25 @@
       cjs.volume(newVol);
   }
 
+  function startTitleInterval(time, bForce = false)
+  {
+    if (bForce)
+      clearTitleInterval();
+    else if (titleInterval)
+      return;
+    
+    titleInterval = setTimeout(getCurrentTitle, time * 1000);
+
+    $("#debugspan").html(titleInterval);
+  }
+
+  function clearTitleInterval()
+  {
+    clearInterval(titleInterval);
+    titleInterval = null;
+    $("#debugspan").html("");
+  }
+
   function getCurrentTitle() {
     titleInterval = null;
 
@@ -774,7 +792,7 @@
                       result.data.live.song.track.albumTitle,
                       result.data.live.song.track.productionDate);
 
-          titleInterval = setTimeout(getCurrentTitle, 30000);
+          startTitleInterval(30);
         }
       }
     }).fail(function (jqXHR, textStatus, errorThrown) {
@@ -786,7 +804,7 @@
   {
     let radioName = radios.get(radiocode).display;
     setMetadata(radioName, "", "", "");
-    titleInterval = setTimeout(getCurrentTitle, 4000);
+    startTitleInterval(4, true);
   }
 
   function setMetadata(title, authors, album, date) {
@@ -867,14 +885,13 @@
   function pauseChromecastMusic()
   {
     cjs.pause();
-    clearTimeout(titleInterval);
-    titleInterval = null;
+    clearTitleInterval();
   }
 
   function startChromecastMusic()
   {
     cjs.play();
-    titleInterval = setTimeout(getCurrentTitle, 30000);
+    startTitleInterval(30);
   }
 
   function setupChromecast()
@@ -968,7 +985,7 @@
   showPlayButton();
   setupChromecast();
 
-  titleInterval = setTimeout(getCurrentTitle, 30000);
+  startTitleInterval(30);
 
   navigator.mediaSession.setActionHandler('previoustrack', function () {
     let radioCodes = Array.from(radios.keys());
