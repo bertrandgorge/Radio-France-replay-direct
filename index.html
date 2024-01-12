@@ -518,22 +518,21 @@
     if (radiocode == '')
       return;
 
-    var video = document.getElementById("lecteur");
+    var player = document.getElementById("lecteur");
 
     var source = "https://stream.radiofrance.fr/" + radiocode + "/" + radiocode + "_hifi.m3u8?id=radiofrance";// _lofi _midfi;
 
     if (!Hls.isSupported()) {
-      video.src = source;
+      player.src = source;
     } else {
       hls = new Hls();
       hls.loadSource(source);
-      hls.attachMedia(video);
+      hls.attachMedia(player);
       window.hls = hls;
     }
 
-    video.play()
-    document.getElementById("son").value = 100
-    document.getElementById("cont").style.display = "inline-block";
+    player.play()
+//    document.getElementById("cont").style.display = "inline-block";
 
     showPauseButton();
     vol();
@@ -620,8 +619,8 @@
   }
 
   function isLocalMusicPlaying() {
-    var video = document.getElementById("lecteur");
-    var isPlaying = !!(video.currentTime > 0 && !video.paused && !video.ended && video.readyState > 2);
+    var player = document.getElementById("lecteur");
+    var isPlaying = !!(player.currentTime > 0 && !player.paused && !player.ended && player.readyState > 2);
     return isPlaying;
   }
 
@@ -647,15 +646,16 @@
   }
 
   function stopLocalMusic() {
-    var video = document.getElementById("lecteur");
-    video.pause();
+    var player = document.getElementById("lecteur");
+    player.pause();
+    player.src = ""; // Force the player to stop downloading data
+
     showPlayButton();
     clearTitleInterval();
   }
 
   function startLocalMusic() {
-    var video = document.getElementById("lecteur");
-    video.play();
+    playLocalMusic();
     showPauseButton();
     startTitleInterval(30);
   }
@@ -663,8 +663,8 @@
   function muteClick() {
     if (playingLocal)
     {
-      var video = document.getElementById("lecteur");
-      video.muted = !video.muted;
+      var player = document.getElementById("lecteur");
+      player.muted = !player.muted;
     }
     else
     {
@@ -681,9 +681,9 @@
   {
     if (playingLocal)
     {
-      var video = document.getElementById("lecteur");
+      var player = document.getElementById("lecteur");
 
-      if (video.muted == true || document.getElementById("son").value == 0) {
+      if (player.muted == true || document.getElementById("son").value == 0) {
         $("#mut").removeClass( "unmuted" ).addClass( "muted" );
       } else {
         $("#mut").removeClass( "muted" ).addClass( "unmuted" );
@@ -714,8 +714,8 @@
   {
     if (playingLocal)
     {
-      var video = document.getElementById("lecteur");
-      video.volume = newVol;
+      var player = document.getElementById("lecteur");
+      player.volume = newVol;
     }
     else
       cjs.volume(newVol);
