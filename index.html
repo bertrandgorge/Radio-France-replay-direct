@@ -46,6 +46,7 @@
       background-color: #E1E1E1;
       font-size: 20px;
       font-family: Montserrat Medium;
+      user-select: none;
     }
 
     footer {
@@ -97,7 +98,11 @@
       background-color: #ffc300;
       color: #181b1f;
     }
-
+    .franceculture {
+      background-color: #722a80;
+      color: #ffffff;
+    }
+    
     .stationbutton:hover,
     .stationbutton:focus,
     .currently-playing {
@@ -401,7 +406,7 @@
   <div>
     France Musique :
 
-    <a id="button_francemusique" class="stationbutton francemusique onclick="return changeRadio('francemusique');">France Musique</a>
+    <a id="button_francemusique" class="stationbutton francemusique" onclick="return changeRadio('francemusique');">France Musique</a>
     <a id="button_francemusiqueeasyclassique" class="stationbutton francemusique"
       onclick="return changeRadio('francemusiqueeasyclassique');">Classique Easy</a>
     <a id="button_francemusiquebaroque" class="stationbutton francemusique"
@@ -426,9 +431,10 @@
 
     <a id="button_franceinter" class="stationbutton franceinter" onclick="return changeRadio('franceinter');">France Inter</a>
     <a id="button_franceinfo" class="stationbutton franceinfo" onclick="return changeRadio('franceinfo');">France Info</a>
+    <a id="button_franceculture" class="stationbutton franceculture" onclick="return changeRadio('franceculture');">France Culture</a>    
   </div>
   <br />
-  <div>
+  <div onclick="return startTitleInterval(4, true);">
     <h3 id="titl2"> </h3>
     <p><span id="song_title"></span></p>
     <p><span id="song_authors"></span> <span id="song_album"></span> <span id="song_date"></span></p>
@@ -493,6 +499,7 @@
 
   radios.set('franceinter', { 'display': "France Inter", 'apiId': "FRANCEINTER" });
   radios.set('franceinfo', { 'display': "France Info", 'apiId': "FRANCEINFO" });
+  radios.set('franceculture', { 'display': "France Culture", 'apiId': "FRANCECULTURE" });
 
   function changeRadio(newRadioCode) {
     $("#button_" + radiocode).removeClass("currently-playing");
