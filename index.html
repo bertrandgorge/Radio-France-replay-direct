@@ -25,6 +25,16 @@
     integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
 
   <style>
+    
+    body {
+      text-align: center;
+      color: #353535;
+      background-color: #E1E1E1;
+      font-size: 15px;
+      font-family: "Ubuntu", sans-serif;
+      user-select: none;
+    }
+
     button.subrep {
       margin-bottom: 30px;
     }
@@ -40,15 +50,6 @@
     h2 {
       margin: 10px;
       font-size: 25px;
-    }
-
-    body {
-      text-align: center;
-      color: #353535;
-      background-color: #E1E1E1;
-      font-size: 20px;
-      font-family: "Ubuntu", sans-serif;
-      user-select: none;
     }
 
     footer {
@@ -74,11 +75,11 @@
     .stationbutton {
       border: 1px solid;
       border-radius: 28px;
-      padding: 11px;
+      padding: 8px;
       display: inline-block;
       background-color: #B4B4B4;
       color: #353535;
-      margin: 5px;
+      margin: 6px 4px;
       cursor: pointer;
     }
 
@@ -284,8 +285,6 @@
 
 <body>
   <div>
-    Fip :
-
     <a id="button_fip" class="stationbutton fip" onclick="return changeRadio('fip');">Fip</a>
     <a id="button_fiprock" class="stationbutton fip" onclick="return changeRadio('fiprock');">Rock</a>
     <a id="button_fipjazz" class="stationbutton fip" onclick="return changeRadio('fipjazz');">Jazz</a>
@@ -302,8 +301,6 @@
   </div>
   <br />
   <div>
-    France Musique :
-
     <a id="button_francemusique" class="stationbutton francemusique" onclick="return changeRadio('francemusique');">France Musique</a>
     <a id="button_francemusiqueeasyclassique" class="stationbutton francemusique" onclick="return changeRadio('francemusiqueeasyclassique');">Classique Easy</a>
     <a id="button_francemusiquepianozen" class="stationbutton francemusique" onclick="return changeRadio('francemusiquepianozen');">Piano Zen</a>
@@ -318,8 +315,6 @@
   </div>
   <br />
   <div>
-    Infos :
-
     <a id="button_franceinter" class="stationbutton franceinter" onclick="return changeRadio('franceinter');">France Inter</a>
     <a id="button_franceinfo" class="stationbutton franceinfo" onclick="return changeRadio('franceinfo');">France Info</a>
     <a id="button_franceculture" class="stationbutton franceculture" onclick="return changeRadio('franceculture');">France Culture</a>    
@@ -379,7 +374,7 @@
 
   radios.set('francemusique', { 'display': "France Musique", 'apiId': "FRANCEMUSIQUE" });
   radios.set('francemusiqueeasyclassique', { 'display': "France Musique Classique Easy", 'apiId': "FRANCEMUSIQUE_CLASSIQUE_EASY" });
-  radios.set('francemusiquepianozen', { 'display': "France Musique Piano Zen", 'apiId': "FRANCEMUSIQUE_PIANOZEN" });
+  radios.set('francemusiquepianozen', { 'display': "France Musique Piano Zen", 'apiId': "FRANCEMUSIQUE_PIANO_ZEN" });
   radios.set('francemusiquebaroque', { 'display': "France Musique la Baroque", 'apiId': "FRANCEMUSIQUE_LA_BAROQUE" });
   radios.set('francemusiqueclassiqueplus', { 'display': "France Musique Classique Plus", 'apiId': "FRANCEMUSIQUE_CLASSIQUE_PLUS" });
   radios.set('francemusiqueconcertsradiofrance', { 'display': "France Musique Concerts Radio France", 'apiId': "FRANCEMUSIQUE_CONCERT_RF" });
